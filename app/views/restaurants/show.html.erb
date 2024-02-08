@@ -1,0 +1,19 @@
+<%= @restaurant.name %>
+<%= @restaurant.address %>
+<%= @restaurant.category %>
+
+<h1>Reviews</h1>
+<% if @restaurant.reviews.any? %>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li>
+        <strong><%= review.rating %> stars:</strong> <%= review.content %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No reviews available for this restaurant.</p>
+<% end %>
+
+<%= link_to "Add a Review", new_restaurant_review_path(@restaurant) %>
+<%= link_to "Back to Resaurants", restaurants_path %>
